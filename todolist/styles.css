@@ -1,0 +1,220 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  
+  /* Background image settings */
+  background: url("https://cdn5.vectorstock.com/i/1000x1000/27/84/to-do-list-background-vector-14042784.jpg")
+              no-repeat center center fixed;
+  background-size: cover;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Optionally overlay a dark/white layer to improve contrast */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.6); /* white overlay with opacity */
+  /* or use semi-transparent black: rgba(0,0,0,0.3) */
+  pointer-events: none; /* so that overlay doesn’t block clicks */
+  z-index: -1;
+}
+
+/* Make sure your container is above the overlay */
+.container {
+  position: relative;
+  z-index: 1;
+  background: #ffffff; /* or semi-transparent white if you prefer */
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Container */
+.container {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Heading */
+h1 {
+  text-align: center;
+  color: #1a73e8;
+  margin-bottom: 20px;
+  transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
+}
+
+h1:hover {
+  color: #0056b3; /* Darker blue */
+  transform: scale(1.05); /* Slight zoom */
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Glow effect */
+}
+
+/* Input container */
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-container input {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #1a73e8;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.input-container input:focus {
+  border-color: #0056b3;
+  box-shadow: 0 0 5px #0056b3;
+}
+
+.input-container input:hover {
+  border-color: #1a73e8;
+  box-shadow: 0 0 5px rgba(26, 115, 232, 0.5);
+}
+
+.input-container button {
+  padding: 12px 18px;
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.input-container button:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Task list */
+ul {
+  list-style: none;
+}
+
+/* Task item */
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f9fcff;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  animation: fadeIn 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+li span {
+  flex: 1;
+  margin: 0 10px;
+  transition: 0.3s;
+}
+
+/* Complete button */
+li .complete-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  color: #34a853;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: transform 0.3s, color 0.3s;
+}
+
+li .complete-btn:hover {
+  color: #0c661b;
+  transform: scale(1.2);
+}
+
+/* Remove button */
+li .remove-btn {
+  background: #ea4335;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+li .remove-btn:hover {
+  background: #b71c1c;
+  transform: scale(1.05);
+}
+
+/* Completed task */
+.completed {
+  text-decoration: line-through;
+  color: #6c757d;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.completed:hover {
+  opacity: 1;
+  color: #495057; /* Darker gray */
+  text-decoration-color: #1a73e8; /* Blue strike line */
+  transform: scale(1.02);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  .input-container {
+    flex-direction: column;
+  }
+
+  .input-container input,
+  .input-container button {
+    width: 100%;
+  }
+
+  .input-container button {
+    margin-top: 10px;
+  }
+}
